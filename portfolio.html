@@ -1,1 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sai Prakash Reddy — Portfolio</title>
+  <meta name="description" content="Personal portfolio website for a Java/Frontend developer. Pure HTML + CSS." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 
+   <style>
+    :root {
+  --bg:#25292b;
+  --text:#e8edf7;
+  --muted:#a7b0c4;
+  --brand:#ffd86b;
+  --brand-2:#57b8ff;
+  --card:#121826;
+  --chip:#1b2437;
+  --border:rgba(255,255,255,.08);
+  --max:1100px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Poppins,system-ui,sans-serif;
+  background: radial-gradient(1200px 600px at 20% 15%, rgba(255,216,107,.15), transparent 60%),
+              radial-gradient(1000px 500px at 80% 20%, rgba(87,184,255,.15), transparent 60%),
+              var(--bg);
+  color:var(--text);
+}
+a{color:inherit;text-decoration:none}
+
+/* NAVBAR */
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);
+  background:linear-gradient(to bottom,rgba(11,15,23,.85),rgba(11,15,23,.4));
+  border-bottom:1px solid var(--border);}
+.nav .wrap{max-width:var(--max);margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700}
+.brand__dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 0 20px rgba(255,216,107,.8)}
+.nav a.link{padding:8px 14px;border-radius:999px;border:1px solid transparent}
+.nav a.link:hover{border-color:var(--border);background:rgba(255,255,255,.03)}
+.links{display:flex;gap:4px}
+
+/* HERO */
+.hero{min-height:86vh;display:grid;place-items:center;text-align:center;padding:80px 20px 60px}
+.hero .inner{max-width:900px}
+.tag{display:inline-block;padding:6px 12px;border:1px solid var(--border);border-radius:999px;color:var(--muted);margin-bottom:18px;background:rgba(255,255,255,.02)}
+.title{font-size:clamp(36px,7vw,64px);font-weight:800;color:var(--brand);text-shadow:0 0 18px rgba(255,216,107,.45)}
+.subtitle{font-size:clamp(16px,2.5vw,20px);color:var(--muted)}
+.cta{margin-top:26px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn{padding:12px 18px;border-radius:14px;border:1px solid var(--border);background:linear-gradient(180deg,rgba(255,216,107,.15),rgba(255,216,107,.05));font-weight:600;cursor:pointer}
+.btn:hover{transform:translateY(-2px);transition:.2s;box-shadow:0 8px 30px rgba(255,216,107,.15)}
+.btn.ghost{background:transparent}
+
+/* SECTIONS */
+section{padding:70px 20px}
+.wrap{max-width:var(--max);margin:auto}
+.section-title{font-size:clamp(22px,3.5vw,32px);font-weight:700}
+.section-sub{color:var(--muted);margin:0 0 26px}
+
+/* ABOUT */
+.about{display:grid;gap:24px}
+@media(min-width:900px){.about{grid-template-columns:1.3fr .9fr}}
+.card{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:18px;padding:20px}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.stat{background:var(--chip);border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center}
+.muted{color:var(--muted)}
+
+/* SKILLS */
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:var(--chip);border:1px solid var(--border);padding:8px 12px;border-radius:999px;color:#d7def0}
+
+/* PROJECTS */
+.grid{display:grid;gap:16px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}}
+.project{overflow:hidden;border-radius:16px;border:1px solid var(--border);background:var(--card);display:flex;flex-direction:column}
+.project__media{aspect-ratio:16/9;background:linear-gradient(135deg,rgba(255,216,107,.12),rgba(87,184,255,.12))}
+.project__body{padding:14px 16px 18px}
+.pill{display:inline-block;margin-top:10px;font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid var(--border);color:#c7d2ee}
+
+/* TIMELINE */
+.timeline{border-left:2px solid var(--border);padding-left:18px}
+.tl-item{margin:0 0 18px;position:relative}
+.tl-item::before{content:"";position:absolute;left:-10px;top:4px;width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 0 10px rgba(255,216,107,.6)}
+
+/* CONTACT */
+.contact-grid{display:grid;gap:16px}
+@media(min-width:800px){.contact-grid{grid-template-columns:1fr 1fr}}
+.input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.02);color:var(--text)}
+.input:focus{outline:none;border-color:rgba(107, 213, 255, 0.4);box-shadow:0 0 0 4px rgba(107, 255, 240, 0.06)}
+textarea.input{min-height:130px;resize:vertical}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:30px 20px;color:var(--muted);text-align:center}
+
+   </style>
+
+</head>
+<body>
+  <!-- NAVBAR  -->
+  <nav class="nav">
+    <div class="wrap">
+      <a class="brand" href="#home">
+        <span class="brand__dot"></span>
+        <span>Sai Reddy • Portfolio</span>
+      </a>
+      <div class="links">
+        <a class="link" href="#projects">Projects</a>
+        <a class="link" href="#skills">Skills</a>
+        <a class="link" href="#about">About</a>
+        <a class="link" href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home" class="hero">
+    <div class="inner">
+      
+      <h1 class="title">Java Full Stack Developer</h1>
+      <p class="subtitle">Crafting scalable web solutions with Java and modern frontend technologies — turning logic into intuitive web applications.</p>
+      <div class="cta">
+        <a class="btn" href="#projects">View Projects</a>
+        <a class="btn ghost" href="resume.pdf" download> Resume</a>
+      </div>
+    </div>
+  </header>
+
+  <!--  ABOUT  -->
+  <section id="about">
+    <div class="wrap about">
+      <div class="card">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-sub">Hi, I'm <strong>Sai Prakash Reddy</strong>, a motivated and fast-learning engineer transitioning into software development. I enjoy building clean UIs, writing readable Java code, and solving real problems with simple, reliable solutions.</p>
+        <div class="stat-grid">
+          <div class="stat"><strong>Java</strong><br><span class="muted">Core, OOPs</span></div>
+          <div class="stat"><strong>Frontend</strong><br><span class="muted">HTML, CSS</span></div>
+          <div class="stat"><strong>DataBases</strong><br><span class="muted">MySQL </span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
+            <div class="tl-item">
+            <h3>Responsive UI Development</h3>
+            <div class="muted">July 2025</div>
+            <p class="muted">Developed responsive Flip Card and form components using CSS, enhancing user experience and web accessibility.
+• Optimized cross-device compatibility to ensure seamless interaction and consistent performance.</p>
+          </div>
+
+          <div class="tl-item">
+            <h3>Production Engineer — Radiant Appliances</h3>
+            <div class="muted">Jan 2025 – Apr 2025 • Hyderabad</div>
+            <p class="muted">Improved manufacturing efficiency through process tuning, quality checks, and daily cross-team standups.</p>
+          </div>
+          <div class="tl-item">
+            <h3>Intern — Electric Vehicle Tech (SkillDzire)</h3>
+            <div class="muted">Jun 2024 – Aug 2024 • Hyderabad</div>
+            <p class="muted">Hands-on subsystem testing; used MATLAB/diagnostic tools for battery and motor control analysis.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS  -->
+  <section id="skills">
+    <div class="wrap">
+      <h2 class="section-title">Skills</h2>
+      <p class="section-sub">A quick snapshot of tools and technologies I work with.</p>
+      <div class="chips">
+        <span class="chip">Java</span>
+        <span class="chip">Core Java</span>
+        <span class="chip">OOPs</span>
+        <span class="chip">HTML</span>
+        <span class="chip">CSS</span>
+        <span class="chip">MySQL</span>
+        <span class="chip">MATLAB</span>
+        <span class="chip">Git</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- = PROJECTS  -->
+  <section id="projects">
+    <div class="wrap">
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-sub">Some things I’ve built recently.</p>
+      <div class="grid">
+        <article class="project">
+          <div class="project__media"></div>
+          <div class="project__body">
+            <h3>Alcohol Detection & Engine Locking</h3>
+            <p>Arduino + MQ-3 sensor system that prevents ignition when alcohol threshold is crossed.</p>
+            <span class="pill">C • Arduino • Sensors</span>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project__media"></div>
+          <div class="project__body">
+            <h3>Food Delivery Web</h3>
+            <p>Static concept of a responsive food ordering UI with categories, menu cards, and checkout layout.</p>
+            <span class="pill">HTML • CSS</span>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project__media"></div>
+          <div class="project__body">
+            <h3>Portfolio</h3>
+            <p>Single-file, no-JavaScript portfolio with accessibility, responsiveness, and clean typography.</p>
+            <span class="pill">HTML • CSS</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!--  EDUCATION  -->
+  <section id="education">
+    <div class="wrap">
+      <h2 class="section-title">Education</h2>
+      <div class="timeline">
+        <div class="tl-item">
+          <h3>B.Tech — Electrical & Electronics Engineering</h3>
+          <div class="muted">G. Pulla Reddy Engineering College • 2022 – 2025</div>
+        </div>
+        <div class="tl-item">
+          <h3>Diploma — Electrical & Electronics</h3>
+          <div class="muted">Govt. Polytechnic College • 2019 – 2022</div>
+        </div>
+        <div class="tl-item">
+          <h3>Secondary School</h3>
+          <div class="muted">Sree Nethaji E/M School • 2018 – 2019</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--  CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-sub">Have an opportunity or collaboration in mind? Let’s talk.</p>
+      <form class="card contact-grid" action="mailto:saiprakashreddymasturu@gmail.com" method="post" enctype="text/plain">
+        <div>
+          <label for="name" class="muted">Your name</label>
+          <input class="input" id="name" name="name" placeholder="Sai Reddy" required>
+        </div>
+        <div>
+          <label for="email" class="muted">Your email</label>
+          <input class="input" id="email" name="email" type="email" placeholder="saiprakashreddy@gmail.com" required>
+        </div>
+        <div style="grid-column:1/-1">
+          <label for="msg" class="muted">Message</label>
+          <textarea class="input" id="msg" name="message" placeholder="Hello Sai, I’d like to discuss…" required></textarea>
+        </div>
+        <div style="grid-column:1/-1; display:flex; gap:10px; flex-wrap:wrap">
+          <button class="btn" type="submit">Send Message</button>
+          <a class="btn ghost" href="#home">Back to top</a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Sai Prakash Reddy • 
+    <a href="https://www.linkedin.com/in/sai-prakash-reddy-musturu-27a76925b" target="_blank">LinkedIn</a> • 
+    <a href="https://github.com/saiprakashreddy123" target="_blank">GitHub</a>
+  </footer>
+</body>
+</html>
+
+
+    
